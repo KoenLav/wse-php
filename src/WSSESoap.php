@@ -221,8 +221,8 @@ class WSSESoap
             }
         }
 
-        if ($this->signAllHeaders) {
-            foreach ($this->secNode->parentNode->childNodes AS $node) {
+        foreach ($this->secNode->parentNode->childNodes AS $node) {
+            if ($this->signAllHeaders || $node->localName == 'To') {
                 if (($node->nodeType == XML_ELEMENT_NODE) &&
                     ($node->namespaceURI != self::WSSENS)) {
                     $arNodes[] = $node;
