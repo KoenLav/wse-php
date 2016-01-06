@@ -101,6 +101,9 @@ class WSSESoap
         $this->SOAPXPath = new DOMXPath($doc);
         $this->SOAPXPath->registerNamespace('wssoap', $this->soapNS);
         $this->SOAPXPath->registerNamespace('wswsse', self::WSSENS);
+
+        $this->envelope->setAttributeNS("http://www.w3.org/2000/xmlns/", 'xmlns:'.self::WSSEPFX, self::WSSENS);
+        $this->envelope->setAttributeNS("http://www.w3.org/2000/xmlns/", 'xmlns:'.self::WSUPFX, self::WSUNS);
         $this->locateSecurityHeader($bMustUnderstand, $setActor);
     }
 
